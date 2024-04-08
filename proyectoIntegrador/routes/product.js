@@ -1,12 +1,12 @@
 let express= require('express');
 let router= express.Router()
 let db= require('../db/index');
-let productosControllers = require ('../controllers/productosControllers');
+let productosController = require ('../controllers/productosController');
 
-router.get('/', productosControllers.productos);
-router.get('/cafes', productosControllers.cafes);
+router.get('/', productosController.productos);
+router.get('/cafes', productosController.cafes);
 
-router.get('/matcha', productosControllers.matcha);
-router.get('/detalle/:id', productosControllers.detalle);
+router.get('/matcha', productosController.matcha);
+router.get('/detalle/:id', productosController.detalle);
 
 module.exports= router;

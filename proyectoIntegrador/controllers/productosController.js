@@ -1,9 +1,7 @@
 const db = require ('../db/index')
 
-let productosControllers = {
-    index : function(req, res) {
-        res.send(db);
-      },
+let productosController = {
+    
     productos: function(req,res){
         let cafes=[]
         for (let i = 0; i < db.productos.length; i++) {
@@ -41,4 +39,4 @@ let productosControllers = {
     }
 }
 
-module.exports = productosControllers;
+module.exports = productosController;
