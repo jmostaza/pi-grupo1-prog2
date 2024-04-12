@@ -1,32 +1,7 @@
 const db = require ('../db/index')
 
 let productosController = {
-    
-    productos: function(req,res){
-        let cafes=[]
-        for (let i = 0; i < db.productos.length; i++) {
-           cafes.push(db.productos[i]);
-        }
-        res.send(cafes)
-    },
-    cafes: function(req,res){
-        let tipo=[]
-        for (let i = 0; i < db.productos.length; i++) {
-           if('cafe' == db.productos[i].infusion){
-            tipo.push(db.productos[i])
-           }
-        }
-        res.send(tipo)
-    },
-    matcha : function(req,res){
-        let tipo=[]
-        for (let i = 0; i < db.productos.length; i++) {
-           if('matcha' == db.productos[i].infusion){
-            tipo.push(db.productos[i])
-           }
-        }
-        res.send(tipo)
-    },
+
     detalle: function(req,res){
         let id= req.params.id
         let cafe
@@ -35,8 +10,11 @@ let productosController = {
             cafe= db.productos[i]
            }
         }
-        res.send(cafe)
-    }
+        res.render('productos' , {listado:cafe})
+    },
+    productAdd : function(req, res) {
+        res.render('productAdd' , {listado:db});
+      }
 }
 
 module.exports = productosController;
