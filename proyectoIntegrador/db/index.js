@@ -113,7 +113,7 @@ let db ={
             imagenPerfil: '/images/foto-icono-2.jpeg'},
             {nombreUsuario: 'Mailen',
             textoComentario:'Me aventuré a probar un café fuera de mi zona de confort y fue una grata sorpresa. Este estilo de café se ha convertido en mi nuevo favorito. ¡Recomendado al 100%!',
-            imagenPerfil: 'im/images/foto-icono-5.jpegg'}
+            imagenPerfil: '/images/foto-icono-5.jpegg'}
             ]
         },
         {nombre: 'Night Owl Blend',

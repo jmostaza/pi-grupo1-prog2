@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include("./partials/head.ejs") %>
+<body>
+	<!-- Header -->
+<%- include("./partials/header.ejs") %>
+
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="products-title">Agregar productos</h2>
+        </div>
+        <!-- Show the "ultimos" products -->
+       
+        <h2 class="col-12">
+            <!-- Formulario -->
+            <form action="" method="GET">
+                <div>
+					<label for="fotoProducto">Foto del producto (URL):</label>
+					<input type="text" id="fotoProducto" name="fotoProducto" required>
+				</div>
+                <div>
+					<label for="nombreProducto">Nombre del producto:</label>
+					<input type="text" id="nombreProducto" name="nombreProducto" required>
+				</div>
+                <div>
+					<label for="descripcionProducto">Descripción del producto:</label>
+					<input type="text" id="descripcionProducto" name="descripcionProducto" required>
+				</div>
+                
+                <button type="submit">Agregar producto</button>
+            
+            </form>
+        </h2>
+
+
+    	<!-- footer -->
+	<%- include("./partials/footer.ejs") %>
+	<!-- /footer -->
+</body>	
+</html>

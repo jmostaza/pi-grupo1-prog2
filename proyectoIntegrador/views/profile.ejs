@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include("./partials/head.ejs") %>
+<body>
+	<!-- Header -->
+<%- include("./partials/header.ejs") %>
+	<!-- product detail -->
+
+	<!-- Datos del usuario -->
+	<section class="info-usuario container products-wrapper">
+		<div class="row">
+			<div class="img-container offset-3 col-2">
+				<img src="<%=listado.usuario.fotoDePerfil%>" alt="foto de perfil" class="foto-perfil">
+			</div>
+			<div class="data-container col-6">
+				<div class="d-flex align-items-center ">
+					<h1 class="main-title"> <%=listado.usuario.usuario%>
+						<a href="/profileEdit">
+							<i class="fas fa-cog"></i>
+						</a>
+					</h1>
+					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+				</div>
+                <div>
+                    <p class="">Email: <%=listado.usuario.email%></p>
+                </div>
+				<div>
+                
+					<ul class="">
+						<li>10 productos</li>
+						<li>200 seguidores</li>
+						<li>300 comentarios</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Datos del usuario -->
+
+	<!-- Mis productos -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Mis productos</h2>
+			</div>
+
+            <% for( let i = 0; i < listado.productos.length; i++ ) { %>
+				<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/productos/detalle/<%= listado.productos[i].id %> "> 
+						<figure class="product-box_image">
+							<img src=" <%= listado.productos[i].imagen %>" alt="">
+						</figure>
+						<article class="product-box_data">
+							<h2><%= listado.productos[i].nombre %></h2>
+							<p><%= listado.productos[i].descripcion %></p>
+							<p><%= listado.productos[i].comentarios.length %></p>
+						</article>
+					</a>
+				</section>
+				</div>
+            <% } %>
+
+        
+
+
+<!-- footer -->
+<%- include("./partials/footer.ejs") %>
+<!-- /footer -->
+
+</body>	
+</html>
