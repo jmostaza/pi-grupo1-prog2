@@ -6,14 +6,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
-
+	
 	<title> Mercado Liebre Argentina</title>
-	<!-- Font Awesome Stylesheet -->
+			<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="./css/app.css">
+	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 						<img src="./images/logo-mercado-liebre.svg">
 					</a>
 				</div>
-
+	
 				<div class="col-7 col-md-6">
 					<form action="search-results.html" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
@@ -34,7 +34,7 @@
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
-
+	
 				<div class="col-12 col-md-4">
 					<a class="main-header_credit-link">
 						<i class="fas fa-hand-holding-usd"></i>
@@ -42,17 +42,17 @@
 					</a>
 				</div>
 			</div>
-
+	
 			<button class="btn-toggle-navbar">
 				<i class="fas fa-bars"></i>
 			</button>
-
+	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
 					<li><a href="index.html">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
-
+	
 				<ul class="right-navbar">
 					<!-- Solo logueado <li><a href="profile.html">
 								Nombre del usuario <i class="fas fa-user"></i>
@@ -82,66 +82,73 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
+				<h2 class="products-title">Registrate</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12">
-				<!-- Formulario -->
-				<form action="/rutaDeDestino" method="GET">
-					<div>
-						<label for="usuario">Usuario (email):</label>
-						<input type="email" id="usuario" name="usuario" required>
-					</div>
-					<div>
-						<label for="contrasena">Contraseña:</label>
-						<input type="password" id="contrasena" name="contrasena" required>
-					</div>
-					<div>
-						<input type="checkbox" id="recordarme" name="recordarme">
-						<label for="recordarme">Recordarme</label>
-					</div>
-					<button type="submit">Iniciar Sesión</button>
-				
-				</form>
+			<h2 class="col-12"> 
+				<form action="" method="GET">
+				<div>
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div>
+					<label for="usuario">Usuario:</label>
+					<input type="text" id="usuario" name="usuario" required>
+				</div>
+				<div>
+					<label for="contrasena">Contraseña:</label>
+					<input type="password" id="contrasena" name="contrasena" required>
+				</div>
+				<div>
+					<label for="fechaNac">Fecha de Nacimiento:</label>
+					<input type="date" id="fecha-nac" name="fecha-nac" required>
+				</div>
+				<div>
+					<label for="dni">Nro de Documento:</label>
+					<input type="number" id="dni" name="dni" required>
+				</div>
+				<div>
+					<label for="fotoPerfil">Foto de Perfil (URL):</label>
+					<input type="text" id="fotoPerfil" name="fotoPerfil" required>
+				</div>
+				<button type="submit">Registrar</button>
+			</form>
 			</h2>
 
 
-			<!-- footer -->
-			<footer class="main-footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 col-lg-4">
-							<article class="footer-data">
-								<i class="fas fa-credit-card"></i>
-								<h2>Pagá con tarjeta o en efectivo</h2>
-								<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de
-									pago.
-									¡Y
-									siempre es seguro!</p>
-							</article>
-						</div>
-						<div class="col-12 col-lg-4">
-							<article class="footer-data">
-								<i class="fas fa-gift"></i>
-								<h2>Envío gratis desde $ 1.999</h2>
-								<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de
-									productos. Es un
-									beneficio de Mercado Puntos.</p>
-							</article>
-						</div>
-						<div class="col-12 col-lg-4">
-							<article class="footer-data">
-								<i class="fas fa-user-shield"></i>
-								<h2>Seguridad, de principio a fin</h2>
-								<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque
-									estás
-									siempre protegido.</p>
-							</article>
-						</div>
-					</div>
+	<!-- footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-4">
+					<article class="footer-data">
+						<i class="fas fa-credit-card"></i>
+						<h2>Pagá con tarjeta o en efectivo</h2>
+						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago.
+							¡Y
+							siempre es seguro!</p>
+					</article>
 				</div>
-			</footer>
-			<!-- /footer -->
+				<div class="col-12 col-lg-4">
+					<article class="footer-data">
+						<i class="fas fa-gift"></i>
+						<h2>Envío gratis desde $ 1.999</h2>
+						<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un
+							beneficio de Mercado Puntos.</p>
+					</article>
+				</div>
+				<div class="col-12 col-lg-4">
+					<article class="footer-data">
+						<i class="fas fa-user-shield"></i>
+						<h2>Seguridad, de principio a fin</h2>
+						<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás
+							siempre protegido.</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /footer -->
 </body>
 
 </html>

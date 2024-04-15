@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: rgb(87, 57, 14);
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -52,6 +52,11 @@ figure {
 
 img {
   width: 100%;
+}
+
+.logo{
+  width: 60%;
+  border-radius: 50%;
 }
 
 input,
@@ -140,7 +145,7 @@ hr {
 }
 
 .logout:hover{
-  color: #1259c3;
+  color: #cfc5a4;
 }
 
 .left-navbar a,
@@ -175,13 +180,13 @@ hr {
 }
 
 .product-box {
-  background-color: #ffffff;
-  border-radius: 5px;
-  overflow: hidden;
-  transition: 300ms;
-  margin: 20px 0;
-}
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 300ms;
 
+  }
+  
 .product-box a {
   display: block;
 }
@@ -508,7 +513,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: #cfc5a4;
   }
 
   .left-navbar li {
