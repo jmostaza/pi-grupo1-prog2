@@ -54,13 +54,14 @@
 				<h2 class="products-title">Más comentados</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
+			<!-- PONEMOS QUE LA I COMIENCE EN 6 ASI MUESTRA LOS ULTIMOS PRODUCTOS -->
 			
 			<% for( let i = 6; i < listado.productos.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="./productos"> 
+					<a href="/productos/detalle/<%= listado.productos[i].id %> "> 
 						<figure class="product-box_image">
-							<img src=" <%= listado.productos[i].imagen %>" alt="cafetera moulinex">
+							<img src=" <%= listado.productos[i].imagen %>" alt="">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= listado.productos[i].nombre %></h2>

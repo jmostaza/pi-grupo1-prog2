@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: rgb(87, 57, 14);
+  --yellow: #57350E;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -13,6 +13,18 @@
   --base-font-family: 'Roboto', sans-serif
 }
 
+.products-title{
+    font-family: "Acme", serif;
+    font-weight: 400;
+    font-style: normal;
+  
+}
+
+.product-box_data {
+  font-family: "Acme", serif;
+  font-weight: 400;
+  font-style: normal; 
+}
 
 /*====== Basics ======*/
 * {
@@ -29,7 +41,7 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color:#adc8cd ;
 }
 
 ul,
@@ -55,7 +67,7 @@ img {
 }
 
 .logo{
-  width: 60%;
+  width: 100%;
   border-radius: 50%;
 }
 
@@ -85,6 +97,7 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  color:#cfc5a4
 }
 
 .search-form {
@@ -114,6 +127,24 @@ hr {
   cursor: pointer;
 }
 
+.inputForm {
+  width: 100%; 
+  padding: 10px;
+  border: none; 
+  border-bottom: 2px solid #ccc; 
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.checkbox {
+  margin-right: 5px; 
+}
+
+
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
@@ -128,8 +159,9 @@ hr {
 }
 
 .main-navbar {
-  margin-top: 20px;
+  margin-top: 0px;
   display: none;
+  color:#cfc5a4;
 }
 
 .left-navbar,
@@ -145,7 +177,7 @@ hr {
 }
 
 .logout:hover{
-  color: #cfc5a4;
+  color: rgb(237, 154, 45);
 }
 
 .left-navbar a,
@@ -176,7 +208,7 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color:#03264C;
 }
 
 .product-box {
@@ -274,7 +306,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color:#57350E;
   font-size: 3.5em;
 }
 
@@ -282,12 +314,15 @@ hr {
   color: var(--gray);
   font-size: 2.4em;
   font-weight: 400;
+  font-family: "Alice", serif;
 }
 
 .footer-data p {
   color: var(--gray);
   font-size: 1.5em;
   font-weight: 300;
+  font-family: "Alice", serif;
+
 }
 
 .sub-footer {
@@ -301,6 +336,11 @@ hr {
   padding: 15px 0;
 }
 
+.integrantes{
+  font-size: medium;
+  margin-left: 25px;
+  font-family: "Alice", serif;
+}
 
 /*====== Product Detail ======*/
 .product-detail {
@@ -374,7 +414,7 @@ hr {
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
+  background-color:#57350E;
   font-size: 1.6em;
   color: #ffffff;
   padding: 15px;
@@ -423,7 +463,11 @@ hr {
 .comments p{
   font-size: 1.5em;
   margin-top: 0;
-}
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  }
 .comments .user{
   font-size: 1.7em;
 }
@@ -458,6 +502,27 @@ textarea.form-input {
   padding: 15px;
 }
 
+.formularios {
+  background-color: white; 
+  padding: 20px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  width: 300px;
+
+}
+
+.boton {
+    width: 100%; 
+    padding: 12px;
+    margin-top: 7%;
+    background-color:#57350E;
+    color: white;
+    border: none;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 12px;
+}
+
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;
@@ -475,12 +540,14 @@ textarea.form-input {
 }
 
 .btn{
-  background-color: #1259c3;
+  background-color:#57350E;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
 }
-
+.datosUsuario{
+  font-family: "Alice", serif;
+}
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
@@ -513,7 +580,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: #cfc5a4;
+    color: rgb(237, 154, 45);
   }
 
   .left-navbar li {
@@ -532,4 +599,5 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+  
 }

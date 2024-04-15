@@ -15,20 +15,20 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
 				<!-- Formulario -->
-				<form action="" method="GET">
+				<form class="formularios" action="/users/profile" method="GET">
 					<div>
 						<label for="usuario">Usuario (email):</label>
-						<input type="email" id="usuario" name="usuario" required>
+						<input class="inputForm" type="email" id="usuario" name="usuario" required>
 					</div>
 					<div>
 						<label for="contrasena">Contraseña:</label>
-						<input type="password" id="contrasena" name="contrasena" required>
+						<input class="inputForm" type="password" id="contrasena" name="contrasena" required>
 					</div>
-					<div>
-						<input type="checkbox" id="recordarme" name="recordarme">
+					<div class="checkbox-container">
 						<label for="recordarme">Recordarme</label>
+						<input class="inputForm checkbox" type="checkbox" id="recordarme" name="recordarme">
 					</div>
-					<button type="submit">Iniciar Sesión</button>
+					<button class="boton" type="submit">Iniciar Sesión</button>
 				
 				</form>
 			</h2>

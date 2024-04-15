@@ -14,9 +14,7 @@
 			<h2 class="products-title"> <%= listado.nombre %> </h2> 
 			<p class="product-detail-description">
 				
-				<!-- ACA FALTA CAMBIAR LA RUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
 				<a href="/productos/productAdd">Editar</a>
-				<!-- ACA FALTA CAMBIAR LA RUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ARRIBA-->
 
 			</p>
 		</div>
@@ -34,7 +32,7 @@
 							<div class="data">
 								<p class="user">
 									<!-- recordar cambiar los profile.html a profile  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-								<strong> <a href="/profile"> <%= listado.comentarios[i].nombreUsuario%> </a> </strong>
+								<strong> <a href="/users/profile"> <%= listado.comentarios[i].nombreUsuario%> </a> </strong>
 								<%= listado.comentarios[i].textoComentario%></p>
 							</div>
 							</article>
