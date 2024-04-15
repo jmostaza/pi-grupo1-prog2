@@ -11,7 +11,7 @@ let db ={
         {nombre: 'Half Caff Blend',
         id:1,
         descripcion: 'Una mezcla más relajada y con media cafeína para cuando simplemente quieres tomártelo con calma. Un tueste suave, dulce y equilibrado con notas cálidas de almendras tostadas, chocolate semidulce, caramelo de caramelo y pasas.',
-        imagen: '/images/cafe-1.png',
+        imagen: '/images/cafe-n1.WEBP',
         infusion: 'cafe',
         precio: '$18000',
         comentarios:[
@@ -29,7 +29,7 @@ let db ={
         {nombre: 'Espresso Blend',
         id:2,
             descripcion: 'No se necesita máquina de espresso para el americano perfecto. Con notas de chocolate amargo y caramelo dulce, esta mezcla de espresso es perfecta para cualquier ocasión.',
-            imagen: '/images/cafe-2.png',
+            imagen: '/images/cafe-n2.WEBP',
             infusion: 'cafe',
             precio: '$20000',
             comentarios:[
@@ -47,7 +47,7 @@ let db ={
         {nombre: 'Early Bird Blend',
         id:3,
             descripcion: 'Este es para los madrugadores. Este tueste ligero es crujiente, brillante y complejo, con notas de manzana verde, cítricos, caramelo dulce y chocolate con leche cremoso. Es muy probable que te haga más productivo, o lo que sea.',
-            imagen: '/images/cafe-3.png',
+            imagen: '/images/cafe-n3.WEBP',
             infusion: 'cafe',
             precio: '$18000',
             comentarios:[
@@ -65,7 +65,7 @@ let db ={
         {nombre: 'Vanilla Blend',
         id:4,
             descripcion: 'Esta infusión de tueste medio es ligera, deliciosa y de ensueño, con toques de vainilla de Madagascar y nueces tostadas.',
-            imagen: '/images/cafe-4.png',
+            imagen: '/images/cafe-n4-.WEBP',
             infusion: 'cafe',
             precio: '$18000',
             comentarios:[
@@ -83,7 +83,7 @@ let db ={
         {nombre: 'Social Dog Blend',
         id:5,
         descripcion: '¡Es hora de darse un capricho! Este es el tipo de bebida hecha para compartir. Con mucho cuerpo, complejo y suave con notas de chocolate con leche, maní tostado, azúcar moreno y un final de galleta Graham. Va bien con los chismes...',
-        imagen: '/images/cafe-5.png',
+        imagen: '/images/cafe-n5.WEBP',
         infusion: 'cafe',
         precio: '$18000',
         comentarios:[
@@ -101,7 +101,7 @@ let db ={
         {nombre: 'Decaf Blend',
         id:6,
         descripcion: 'La mezcla descafeinada es para aquellos que quieren un café sin energía. Disfruta de esta mezcla antes de dormir sin interrumpir tu horario de sueño… ¡Ahora puedes tomar café todo el día!',
-        imagen: '/images/cafe-6.png',
+        imagen: '/images/cafe-n6.WEBP',
         infusion: 'cafe',
         precio: '$20000',
         comentarios:[
@@ -119,7 +119,7 @@ let db ={
         {nombre: 'Night Owl Blend',
         id:7,
         descripcion: 'Con esta mezcla, la noche es siempre joven. Rico y aterciopelado, tostado y cremoso con notas de chocolate amargo, miel dulce y nueces tostadas.',
-        imagen: '/images/cafe-7.png',
+        imagen: '/images/cafe-n7.WEBP',
         infusion: 'cafe',
         precio: '$18000',
         comentarios:[
@@ -137,7 +137,7 @@ let db ={
         {nombre: 'Cake Batter Blend',
         id:8,
         descripcion: 'Con notas de pastel de cumpleaños y glaseado de crema de vainilla, nuestra mezcla de masa para pastel hace que cada taza sepa a fiesta.',
-        imagen: '/images/cafe-8.png',
+        imagen: '/images/cafe-n8.WEBP',
         infusion: 'cafe',
         precio: '$18000',
         comentarios:[
@@ -155,7 +155,7 @@ let db ={
         {nombre: 'Matcha Green Tea',
         id:9,
         descripcion: 'Nuestro Matcha es un producto vegetal puro elaborado con té verde ceremonial de grado A, 100 % japonés, que es suave y delicioso. Tiene un hermoso sabor terroso con un color verde vibrante que resulta del alto nivel de clorofila en las hojas. Es vegano, sin gluten, con cafeína y lleno de antioxidantes...',
-        imagen: '/images/cafe-9.png',
+        imagen: '/images/cafe-n9.WEBP',
         infusion: 'matcha',
         precio: '$25000',
         comentarios:[
@@ -170,10 +170,10 @@ let db ={
             imagenPerfil: '/images/foto-icono-3.jpeg'}
             ]
         },
-        {nombre: 'Vanilla Matcha Green Tea',
+        {nombre: 'Vanilla Matcha Tea',
         id:10,
         descripcion: 'Nuestro Vanilla Matcha es un producto vegetal puro elaborado con té verde ceremonial de grado A, 100% japonés, que tiene notas de vainilla de Madagascar, combinadas maravillosamente con el sabor terroso del matcha.',
-        imagen: '/images/cafe-10.png',
+        imagen: '/images/cafe-n10.WEBP',
         infusion: 'matcha',
         precio: '$25000',
         comentarios:[
