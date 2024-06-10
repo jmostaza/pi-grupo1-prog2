@@ -1,4 +1,5 @@
 const db = require ('../db/index')
+const database= require('../database/models')
 
 let productosController = {
 
@@ -29,7 +30,17 @@ let productosController = {
             
         }
         res.render('searchResults' , {listado:buscar});
-      }
+      },
+//       prueba: function(req,res){
+//         database.Product.findAll()
+//         .then(function(data){
+//           console.log('datos de producto:', JSON.stringify(data, null, 4));
+//           res.send(data)
+//         })
+//         .catch(function(e){
+//           console.log(e);
+//         })
+// }
 }
 
 module.exports = productosController;

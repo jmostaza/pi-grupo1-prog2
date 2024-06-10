@@ -12,4 +12,6 @@ router.get('/login', usersController.login);
 router.get('/profile', usersController.profile);
 router.get('/profileEdit', usersController.profileEdit);
 
+router.get('/prueba', usersController.prueba)
+
 module.exports = router;

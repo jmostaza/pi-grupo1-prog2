@@ -1,5 +1,5 @@
 module.exports= function(sequelize, dataTypes){
-    let alias= User;
+    let alias= 'User';
     let cols={
         id: {
             autoIncrement: true,
@@ -7,11 +7,11 @@ module.exports= function(sequelize, dataTypes){
             type: dataTypes.INTEGER
         },
         email: {type: dataTypes.STRING},
-        contraseña: {
+        contrasenia: {
             type: dataTypes.STRING
         },
         fecha:{
-            type: date
+            type: dataTypes.DATE
         },
         dni: {
             type: dataTypes.INTEGER
@@ -21,7 +21,7 @@ module.exports= function(sequelize, dataTypes){
         }
     }
     let config= {
-        tableName: 'users',
+        tableName: 'usuario',
         timestamps: true,
         underscores: true,
         createdAt: 'created_at',

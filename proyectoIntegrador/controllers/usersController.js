@@ -1,4 +1,5 @@
 const db = require ('../db/index')
+const database= require('../database/models')
 
 let usersController = {
 login : function(req, res) {
@@ -15,8 +16,19 @@ login : function(req, res) {
 
   profileEdit : function(req, res) {
     res.render('profileEdit' , {listado:db});
-  }
+  },
 
+    prueba: function(req,res){
+    database.User.findAll()
+    .then(function(data){
+      console.log('datos de user:', JSON.stringify(data, null, 4));
+      res.send(data)
+    })
+    .catch(function(e){
+      console.log(e);
+    })
+
+}
 }
 
 module.exports= usersController;
