@@ -21,7 +21,7 @@ module.exports = function (sequelize,dataTypes) {
         timestamps: true,
         underscored: true,
         createdAt : 'created_at',
-        updatedAt : 'updeated_at',
+        updatedAt : 'updated_at',
         deleatedAt : 'deleated_at'
     }
     const Comments = sequelize.define(alias,cols,config);
