@@ -8,7 +8,7 @@ const registerValidation = [
     body("email")
         .notEmpty()
         .withMessage("Debes completar este campo")
-        
+        .bail()
         .isEmail()
         .withMessage("Debes ingresar un email válido")
         .custom(function (value, { req }) {
@@ -29,6 +29,7 @@ const registerValidation = [
     body("contrasena")
         .notEmpty()
         .withMessage("Debes ingresar una contraseña")
+        .bail()
         .isLength({min: 4})
         .withMessage("Este campo debe contener al menos 4 caracteres")
 ];

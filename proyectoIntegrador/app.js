@@ -40,7 +40,27 @@ app.use(function(req, res, next){
   } 
   return next(); //Clave para que el proceso siga adelante.  
 })
-// ACA VA COOKIES
+
+app.use(function (req,res,next) {
+  if (req.cookies.userId != undefined && req.session.user == undefined) {
+    let idDeLaCookie = req.cookies.userId;
+
+    database.User.findByPk(idDeLaCookie)
+    .then(function (user) {
+      console.log("middleware de la cookie trasladando info");
+      req.session.user = user
+      console.log("en la cookie middleware");
+      res.locals.user = user;
+      return next()
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  } else{
+    return next()
+  }
+  
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

@@ -8,15 +8,14 @@ let usersController = {
 
   //ESTE REGISTER MANDA A LA PAGINA DE REGISTRO
   showRegister: function (req, res) {
-    return res.render("register")
+    if (req.session.users != undefined) { //si hay un usuario logueado
+      res.redirect("/")
+    }else{
+      return res.render("register")
+    };
   },
-
   // ESTE REGISTER REGISTA AL USER EN LA BASE DE DATOS
   register: function (req, res) {
-
-    if (req.session.user != undefined) { //si hay un usuario logueado
-      res.redirect("/")
-    }
 
     let errors = validationResult(req);
     if (!errors.isEmpty()) { // pregunto si hay errores 
