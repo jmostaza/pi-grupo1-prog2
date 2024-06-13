@@ -31,6 +31,8 @@ let productosController = {
         }
         res.render('searchResults' , {listado:buscar});
       },
+
+      }
 //       prueba: function(req,res){
 //         database.Product.findAll()
 //         .then(function(data){
@@ -41,6 +43,5 @@ let productosController = {
 //           console.log(e);
 //         })
 // }
-}
 
 module.exports = productosController;

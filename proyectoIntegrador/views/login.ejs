@@ -2,41 +2,56 @@
 <html lang="es">
 <!-- Include Head -->
 <%- include("./partials/head.ejs") %>
-<body>
-	<!-- Header -->
-<%- include("./partials/header.ejs") %>
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12">
-				<!-- Formulario -->
-				<form class="formularios" action="/users/profile" method="GET">
-					<div>
-						<label for="usuario">Usuario (email):</label>
-						<input class="inputForm" type="email" id="usuario" name="usuario" required>
+	<body>
+		<!-- Header -->
+		<%- include("./partials/header.ejs") %>
+
+			<!-- Novedades -->
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="products-title">Ingresar</h2>
 					</div>
-					<div>
-						<label for="contrasena">Contraseña:</label>
-						<input class="inputForm" type="password" id="contrasena" name="contrasena" required>
-					</div>
-					<div class="checkbox-container">
-						<label for="recordarme">Recordarme</label>
-						<input class="inputForm checkbox" type="checkbox" id="recordarme" name="recordarme">
-					</div>
-					<button class="boton" type="submit">Iniciar Sesión</button>
-				
-				</form>
-			</h2>
+					<!-- Show the "ultimos" products -->
+					<h2 class="col-12">
+						<!-- Formulario -->
+						<form class="formularios" action="/users/login" method="POST" novalidate>
+							<div>
+								<label for="usuario">Usuario (email):</label>
+								<input class="inputForm" type="email" id="usuario" name="email" required
+									value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
+								<!-- vemos si hay errorers y si coincide con el name del input, enviamos el msg -->
+								<% if (locals.errors && errors.email) { %>
+									<div>
+										<%= errors.email.msg %>
+									</div>
+									<% } %>
+							</div>
+
+							<div>
+								<label for="contrasena">Contraseña:</label>
+								<input class="inputForm" type="password" id="contrasena" name="contrasena" required
+									novalidate>
+								<% if (locals.errors && errors.contrasena) { %>
+									<div>
+										<%= errors.contrasena.msg %>
+									</div>
+									<% } %>
+							</div>
+							<div class="checkbox-container">
+								<label for="recordarme">Recordarme</label>
+								<input class="inputForm checkbox" type="checkbox" id="recordarme" name="recordarme">
+							</div>
+							<button class="boton" type="submit">Iniciar Sesión</button>
+
+						</form>
+					</h2>
 
 
-<!-- footer -->
-<%- include("./partials/footer.ejs") %>
-<!-- /footer -->
-</body>
+					<!-- footer -->
+					<%- include("./partials/footer.ejs") %>
+						<!-- /footer -->
+	</body>
 
 </html>

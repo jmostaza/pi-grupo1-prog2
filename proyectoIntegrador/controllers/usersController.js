@@ -5,9 +5,6 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator")
 
 let usersController = {
-  login: function (req, res) {
-    res.render('login', { listado: db });
-  },
 
   //ESTE REGISTER MANDA A LA PAGINA DE REGISTRO
   showRegister: function (req, res) {
@@ -44,6 +41,45 @@ let usersController = {
         })
     }
   },
+
+  showLogin: function (req, res) {
+    return res.render('login')
+  },
+
+  login: function (req, res) {
+
+    let resultValidation = validationResult(req)
+    if (!resultValidation.isEmpty()) {
+      console.log("resultValidation", resultValidation);
+      return res.render('login', { errors: resultValidation.mapped(), oldData: req.body })
+    } else {
+      //Busco el usuario que se quiere loguear
+      users.findOne({
+        where: [{
+          email: req.body.email,
+        }]
+      })
+        .then(function (usuario) {
+          console.log('PASSWORD : ', usuario.contrasenia);
+          let validPassword = bcrypt.compareSync(req.body.contrasena, usuario.contrasenia)
+          console.log('validPassword? :', validPassword);
+          req.session.user = usuario
+          // si tildo recordarme --> creamos la cookie
+          if (req.body.recordarme != undefined) {
+            // console.log("acaaaaa",usuario);
+
+            res.cookie("userId", usuario.id, { maxAge: 1000 * 60 * 5 })
+          }
+          return res.redirect('/')
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    }
+
+  },
+  // ACA VA LOGOUT
 
   profile: function (req, res) {
     res.render('profile', { listado: db });

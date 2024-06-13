@@ -40,6 +40,7 @@ app.use(function(req, res, next){
   } 
   return next(); //Clave para que el proceso siga adelante.  
 })
+// ACA VA COOKIES
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

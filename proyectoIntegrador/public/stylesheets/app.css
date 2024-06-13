@@ -170,10 +170,9 @@ hr {
 }
 
 .logout{
-  background: transparent;
-  border: 0px;
-  cursor: pointer;
-  font-size: 1em;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logout:hover{
