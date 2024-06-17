@@ -15,34 +15,42 @@
         <!-- Show the "ultimos" products -->
         <h2 class="col-12"> 
          <!-- Formulario -->
-        <form class="formularios" action="/users/profile" method="GET">
-            <div>
-                <label for="email">Email:</label>
-                <input class="inputForm" type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="usuario">Usuario:</label>
-                <input class="inputForm" type="text" id="usuario" name="usuario" required>
-            </div>
-            <div>
-                <label for="contrasena">Contraseña:</label>
-                <input class="inputForm" type="password" id="contrasena" name="contrasena" required>
-            </div>
-            <div>
-                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input class="inputForm" type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-            </div>
-            <div>
-                <label for="nroDocumento">Nro de Documento:</label>
-                <input class="inputForm" type="number" id="nroDocumento" name="nroDocumento" required>
-            </div>
-            <div>
-                <label for="fotoPerfil">Foto de Perfil (URL):</label>
-                <input class="inputForm" type="text" id="fotoPerfil" name="fotoPerfil" required>
-            </div>
-            <button class="boton" type="submit">Guardar cambios</button>
-        </form>
-    
+        <% if (locals.user) { %>
+            <form class="formularios" action="/users/profileEdit/<%= locals.user.id %>" method="POST" novalidate>
+                <div>
+                    <label for="email">Email:</label>
+                    <input class="inputForm" type="email" id="email" name="email" value="<%= locals.user.email %>" >
+                    <% if (locals.errors && errors.email) { %>
+                        <p><%= errors.email.msg %></p>
+                    <% } %>
+                </div>
+                <div>
+                    <label for="contrasenia">Nueva contraseña:</label>
+                    <!-- hace falta el required aca??? -->
+                    <input class="inputForm" type="password" id="contrasenia" name="contrasenia" >
+                    <% if (locals.errors && errors.contrasenia) { %>
+                        <p><%= errors.contrasenia.msg %></p>
+                    <% } %>
+                </div>
+                <div>
+                    <label for="fecha">Fecha de Nacimiento:</label>
+                    <input class="inputForm" type="date" id="fecha" name="fecha" value="<%= locals.user.fecha %>" >
+                </div>
+                <div>
+                    <label for="nroDocumento">Nro de Documento:</label>
+                    <input class="inputForm" type="number" id="nroDocumento" name="nroDocumento" value="<%= locals.user.dni %>" >
+                </div>
+                <div>
+                    <label for="foto">Foto de Perfil (URL):</label>
+                    <input class="inputForm" type="text" id="foto" name="foto" value="<%= locals.user.foto %>" >
+                </div>
+                <button class="boton" type="submit">Guardar cambios</button>
+            </form>
+        
+        <% } else { %>
+            <h2 class="col-12">Usted no ha iniciado sesion</h2>
+            <p> <a href="/">Volver a la pagina principal</a></p>
+            <% } %>
         </h2>
 
 <!-- footer -->

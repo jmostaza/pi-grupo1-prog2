@@ -22,9 +22,9 @@ const registerValidation = [
             })
         }),
 
-    body("usuario")
-        .notEmpty()
-        .withMessage("Debes ingresar un nombre de usuario"),
+    // body("usuario")
+    //     .notEmpty()
+    //     .withMessage("Debes ingresar un nombre de usuario"),
 
     body("contrasena")
         .notEmpty()

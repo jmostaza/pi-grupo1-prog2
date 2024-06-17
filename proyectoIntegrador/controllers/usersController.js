@@ -1,4 +1,3 @@
-const db = require('../db/index')
 const database = require('../database/models')
 const users = database.User;
 const bcrypt = require("bcryptjs");
@@ -10,7 +9,7 @@ let usersController = {
   showRegister: function (req, res) {
     if (req.session.users != undefined) { //si hay un usuario logueado
       res.redirect("/")
-    }else{
+    } else {
       return res.render("register")
     };
   },
@@ -79,25 +78,103 @@ let usersController = {
 
   },
   // ACA VA LOGOUT
+  logout: function (req, res) {
+    //Destruir la sessión
+    req.session.destroy();
+
+    //Destruir la cookie
+    res.clearCookie("userId");
+
+    //redireccionar a home
+    return res.redirect("/");
+  },
 
   profile: function (req, res) {
-    res.render('profile', { listado: db });
-  },
+    let id = req.params.id
+    users.findByPk(id, {
+      include: [
+        // {association: 'comentario'},
+        {
+          association: 'producto',
+          include: [
+            { association: "comentario" }
+          ]
+        }
+      ],
+      order: [
+        //como verifico que es esta primero el ultimo cargado???
+        ['created_at', 'DESC']
+      ]
+    })
 
-  profileEdit: function (req, res) {
-    res.render('profileEdit', { listado: db });
-  },
-
-  prueba: function (req, res) {
-    database.User.findAll()
       .then(function (data) {
-        console.log('datos de user:', JSON.stringify(data, null, 4));
-        res.send(data)
+        // console.log('USERRR:', JSON.stringify(data,null,4));
+        
+        res.render('profile', { listado: data })
       })
       .catch(function (e) {
         console.log(e);
       })
+  },
 
+  profileEdit: function (req, res) {
+    let id = req.params.id
+    users.findByPk(id)
+      .then(function (data) {
+        if(req.session.user){
+          if(id == req.session.user.id){
+            console.log(req.session.user);
+          res.render('profileEdit', { listado: data });
+        }
+        else{
+          console.log(req.session.user);
+          res.redirect('/')
+        }
+       
+      }
+      else{
+        res.redirect('/')
+      }
+  }
+)
+    
+      .catch(function (e) {
+        console.log(e);
+      })
+
+  },
+  update: function (req, res) {
+    const id = req.params.id
+    let usuario = {
+      email: req.body.email,
+      contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
+      fecha: req.body.fecha,
+      dni: req.body.nroDocumento,
+      foto: req.body.foto,
+      id: req.session.user.id
+      
+
+    }
+
+    let errors = validationResult(req)
+    if (!errors.isEmpty()) { // pregunto si hay errores 
+      console.log("errors : ", JSON.stringify(errors, null, 4));
+      return res.render('profileEdit', { errors: errors.mapped(), old: req.body })
+    } else {
+      console.log();
+      users.update(usuario,
+        {
+        where: {id: req.params.id}
+      })
+        .then(function (data) {
+          req.session.user= usuario
+          console.log('USUARIOOO:' ,JSON.stringify(req.session.user, null,4));
+          return res.redirect('/')
+        })
+        .catch(function (e) {
+          console.log(e);
+        })
+    }
   }
 }
 

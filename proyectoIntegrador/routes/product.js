@@ -1,6 +1,6 @@
 let express= require('express');
 let router= express.Router()
-let db= require('../db/index');
+let database= require('../database/models')
 let productosController = require ('../controllers/productosController');
 
 

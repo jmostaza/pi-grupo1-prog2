@@ -11,9 +11,8 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			
-			<h2 class="products-title"> <%= listado.nombre %> </h2> 
+			<h2 class="product-box_data">Vendedor:<a href="/users/profile/<%= listado.usuario.id %>"><%= listado.usuario.email %></a></h2>
 			<p class="product-detail-description">
-				
 				<a href="/productos/productAdd">Editar</a>
 
 			</p>
@@ -21,19 +20,19 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%=listado.imagen %> " alt="" class="product-detail-img">
+					<img src="/images/<%=listado.foto %> " alt="" class="product-detail-img">
 					<p class="product-detail-description"> <%= listado.descripcion %> </p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-							<% for( let i = 0; i < listado.comentarios.length; i++ ) { %>
+							<% for( let i = 0; i < listado.comentario.length; i++ ) { %>
 							<article >
-								<img src=" <%= listado.comentarios[i].imagenPerfil%> " alt="">
+								<img src="/images/<%= listado.comentario[i].usuario.foto%> " alt="">
 							<div class="data">
 								<p class="user">
 									<!-- recordar cambiar los profile.html a profile  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-								<strong> <a href="/users/profile"> <%= listado.comentarios[i].nombreUsuario%> </a> </strong>
-								<%= listado.comentarios[i].textoComentario%></p>
+								<strong> <a href="/users/profile/<%= listado.comentario[i].usuario.id %>"> <%= listado.comentario[i].usuario.email%> </a> </strong>
+								<%= listado.comentario[i].texto%></p>
 							</div>
 							</article>
 							<% } %>
