@@ -4,7 +4,7 @@ const bcryptjs = require("bcryptjs");
 const user= database.User;
 
 const loginValidation = [
-// ME FALTA HACER QUE SOLO ME TIRE EL PRIMER ERROR EN CASO DE QUE NO COMPLETE NADA
+
     body('email')
     .notEmpty()
     .withMessage('Debes completar con tu Email')

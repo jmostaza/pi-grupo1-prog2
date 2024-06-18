@@ -41,7 +41,11 @@ let usersController = {
   },
 
   showLogin: function (req, res) {
-    return res.render('login')
+    if (!req.session.user) {
+      return res.render('login')
+    } else {
+      return res.redirect('/')
+    }
   },
 
   login: function (req, res) {
