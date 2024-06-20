@@ -36,14 +36,22 @@
 							</div>
 							</article>
 							<% } %>
-							
-	
 						
 					</section>
-					<form class="form" action="" method="get">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
+
+					<% if (locals.user) { %>
+						<form class="form" action="/productos/detalle/<%= listado.id %>" method="post">
+							<input class="form-input" type="text" name="comentario" value="" >
+							<% if (locals.errores&& errores.comentario) { %>
+								<div class="error-msg"><%= errores.comentario.msg %></div>
+							   <% } %>
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+					<% } else{ %>
+						<h2 class="col-12">Debe iniciar sesión para comentar</h2>
+						<p><a href="/users/login">Inicie sesión</a></p>
+						<% } %>
+						
 					<hr>
 				</div>
 			</div>

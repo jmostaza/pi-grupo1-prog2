@@ -1,7 +1,7 @@
 const database = require('../database/models')
+const comments = database.Comment;
 const products = database.Product;
 const op = database.Sequelize.Op;
-
 const { validationResult } = require("express-validator")
 
 let productosController = {
@@ -97,6 +97,53 @@ let productosController = {
             .catch(function (error) {
                 console.log(error);
             })
+    },
+
+    addComment: function (req, res) {
+        // console.log("Entrando a addCommenttt");
+        let errores = validationResult(req);
+        if (req.session.user != undefined) {
+            if (errores.isEmpty()) {
+                let id = req.params.id
+
+                comments.create({
+                    texto: req.body.comentario,
+                    id_usuario: req.session.user.id,
+                    id_producto: req.params.id
+                })
+                    .then(function (data) {
+                        res.redirect(`/productos/detalle/${id}`)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+
+            }
+            else {
+                let id = req.params.id
+
+                products.findByPk(id, {
+                    include: [
+                        { association: 'usuario' },
+                        {
+                            association: 'comentario', include: [{
+                                association: 'usuario'
+                            }]
+                        }
+                    ],
+                    order: [[{ model: database.Comment, as: 'comentario' }, 'createdAt', 'DESC']]
+                })
+
+                    .then(function (data) {
+                        return res.render("productos", { listado: data, errores: errores.mapped(), oldData: req.body });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+
+            }
+        }
+
     }
 
 }
