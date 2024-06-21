@@ -32,15 +32,15 @@
 							<section class="comments">
 								<% for( let i=0; i < listado.comentario.length; i++ ) { %>
 									<article>
-										<img src="/images/<%= listado.comentario[i].usuario.foto%> " alt="">
+										<img src="/images/<%= comentario[i].usuario.foto%> " alt="">
 										<div class="data">
 											<p class="user">
 												<!-- recordar cambiar los profile.html a profile  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 												<strong> <a
-														href="/users/profile/<%= listado.comentario[i].usuario.id %>">
-														<%= listado.comentario[i].usuario.email%>
+														href="/users/profile/<%=comentario[i].usuario.id %>">
+														<%= comentario[i].usuario.email%>
 													</a> </strong>
-												<%= listado.comentario[i].texto%>
+												<%= comentario[i].texto%>
 											</p>
 										</div>
 									</article>

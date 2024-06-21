@@ -20,15 +20,25 @@ let productosController = {
             ]
         })
             .then(function (cafe) {
-                console.log('CAFEEE:', JSON.stringify(cafe, null, 4));
-                res.render('productos', { listado: cafe })
+                comments.findAll({
+                    where: { id_usuario: req.session.user.id },
+                    order: [['created_at', 'DESC']],
+                    include: [{ association: 'usuario' }]
+
+                })
+                    .then(function (data) {
+                        console.log('comentario: ', JSON.stringify(data, null, 4));
+                        res.render('productos', { listado: cafe, comentario: data })
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
             })
-            .catch(function (e) {
-                console.log(e);
+            .catch(function (error) {
+                console.log(error);
             })
 
     },
-
 
     searchResults: function (req, res) {
         let busqueda = req.query.search;
@@ -121,17 +131,15 @@ let productosController = {
             }
             else {
                 let id = req.params.id
-
                 products.findByPk(id, {
                     include: [
-                        { association: 'usuario' },
                         {
-                            association: 'comentario', include: [{
-                                association: 'usuario'
-                            }]
+                            association: 'usuario',
+                            include: [
+                                { association: 'comentario' }
+                            ],
                         }
                     ],
-                    order: [[{ model: database.Comment, as: 'comentario' }, 'createdAt', 'DESC']]
                 })
 
                     .then(function (data) {
