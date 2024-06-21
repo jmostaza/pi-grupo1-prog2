@@ -23,7 +23,7 @@
 									value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
 								<!-- vemos si hay errorers y si coincide con el name del input, enviamos el msg -->
 								<% if (locals.errors && errors.email) { %>
-									<div>
+									<div class="error-msg">
 										<%= errors.email.msg %>
 									</div>
 									<% } %>
@@ -34,7 +34,7 @@
 								<input class="inputForm" type="password" id="contrasena" name="contrasena" required
 									novalidate>
 								<% if (locals.errors && errors.contrasena) { %>
-									<div>
+									<div class="error-msg">
 										<%= errors.contrasena.msg %>
 									</div>
 									<% } %>

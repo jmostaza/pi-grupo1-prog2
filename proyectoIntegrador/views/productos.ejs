@@ -2,64 +2,76 @@
 <html lang="es">
 <!-- Include Head -->
 <%- include("./partials/head.ejs") %>
-<body>
-	<!-- Header -->
-<%- include("./partials/header.ejs") %>
 
-	<!-- product detail -->
-	
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			
-			<h2 class="product-box_data">Vendedor:<a href="/users/profile/<%= listado.usuario.id %>"><%= listado.usuario.email %></a></h2>
-			<p class="product-detail-description">
-				<a href="/productos/productAdd">Editar</a>
+	<body>
+		<!-- Header -->
+		<%- include("./partials/header.ejs") %>
 
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/<%=listado.foto %> " alt="" class="product-detail-img">
-					<p class="product-detail-description"> <%= listado.descripcion %> </p>
-				</article>
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-							<% for( let i = 0; i < listado.comentario.length; i++ ) { %>
-							<article >
-								<img src="/images/<%= listado.comentario[i].usuario.foto%> " alt="">
-							<div class="data">
-								<p class="user">
-									<!-- recordar cambiar los profile.html a profile  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-								<strong> <a href="/users/profile/<%= listado.comentario[i].usuario.id %>"> <%= listado.comentario[i].usuario.email%> </a> </strong>
-								<%= listado.comentario[i].texto%></p>
-							</div>
-							</article>
-							<% } %>
-						
-					</section>
+			<!-- product detail -->
 
-					<% if (locals.user) { %>
-						<form class="form" action="/productos/detalle/<%= listado.id %>" method="post">
-							<input class="form-input" type="text" name="comentario" value="" >
-							<% if (locals.errores&& errores.comentario) { %>
-								<div class="error-msg"><%= errores.comentario.msg %></div>
-							   <% } %>
-							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-						</form>
-					<% } else{ %>
-						<h2 class="col-12">Debe iniciar sesión para comentar</h2>
-						<p><a href="/users/login">Inicie sesión</a></p>
-						<% } %>
-						
-					<hr>
+			<div class="container products-wrapper">
+				<div class="d-flex align-items-center">
+
+					<h2 class="product-box_data">Vendedor:<a href="/users/profile/<%= listado.usuario.id %>">
+							<%= listado.usuario.email %>
+						</a></h2>
+					<p class="product-detail-description">
+						<a href="/productos/productEdit/<%= listado.id %>">Editar</a>
+
+					</p>
+				</div>
+				<div class="product-detail">
+					<div class="row">
+						<article class="col-12 col-lg-8 product-detail-info">
+							<img src="/images/<%=listado.foto %> " alt="" class="product-detail-img">
+							<p class="product-detail-description">
+								<%= listado.descripcion %>
+							</p>
+						</article>
+						<div class="col-12 col-lg-4">
+							<section class="comments">
+								<% for( let i=0; i < listado.comentario.length; i++ ) { %>
+									<article>
+										<img src="/images/<%= listado.comentario[i].usuario.foto%> " alt="">
+										<div class="data">
+											<p class="user">
+												<!-- recordar cambiar los profile.html a profile  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+												<strong> <a
+														href="/users/profile/<%= listado.comentario[i].usuario.id %>">
+														<%= listado.comentario[i].usuario.email%>
+													</a> </strong>
+												<%= listado.comentario[i].texto%>
+											</p>
+										</div>
+									</article>
+									<% } %>
+
+							</section>
+
+							<% if (locals.user) { %>
+								<form class="form" action="/productos/detalle/<%= listado.id %>" method="post">
+									<input class="form-input" type="text" name="comentario" value="">
+									<% if (locals.errores&& errores.comentario) { %>
+										<div class="error-msg">
+											<%= errores.comentario.msg %>
+										</div>
+										<% } %>
+											<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+								</form>
+								<% } else{ %>
+									<h2 class="col-12">Debe iniciar sesión para comentar</h2>
+									<p><a href="/users/login">Inicie sesión</a></p>
+									<% } %>
+
+										<hr>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	
-	<!-- footer -->
-	<%- include("./partials/footer.ejs") %>
-	<!-- /footer -->
-</body>	
+
+			<!-- footer -->
+			<%- include("./partials/footer.ejs") %>
+				<!-- /footer -->
+	</body>
+
 </html>

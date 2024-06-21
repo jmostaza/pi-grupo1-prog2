@@ -599,5 +599,14 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
-  
+  .cerrar {
+    background-color:#57350E;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: #cfc5a4;
+    border:none;
+  }
+  .error-msg {
+    color: #d70000
+  }
 }

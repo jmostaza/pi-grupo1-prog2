@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <!-- Header -->
+        <%- include("./partials/header.ejs") %>
+
+            <div class="container products-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="products-title">Editar producto</h2>
+                    </div>
+                    <!-- Show the "ultimos" products -->
+
+                    <h2 class="col-12">
+                        <!-- Formulario -->
+                        <form class="formularios" action="/productos/update/<%= product.id %>" method="POST" novalidate>
+                            <div>
+                                <label for="fotoProducto">Foto del producto (URL):</label>
+                                <input class="inputForm" type="text" id="fotoProducto" name="foto"
+                                    value="<%= locals.oldData && oldData.foto ? oldData.foto : null %>">
+                                <% if (locals.errores&& errores.foto) { %>
+                                    <div class="error-msg">
+                                        <%= errores.foto.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <div>
+                                <label for="nombreProducto">Nombre del producto:</label>
+                                <input class="inputForm" type="text" id="nombreProducto" name="nombre_producto"
+                                    value="<%= locals.oldData && oldData.nombre_producto ? oldData.nombre_producto : null %>">
+                                <% if (locals.errores&& errores.nombre_producto) { %>
+                                    <div class="error-msg">
+                                        <%= errores.nombre_producto.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <div>
+                                <label for="descripcionProducto">Descripción del producto:</label>
+                                <input class="inputForm" type="text" id="descripcionProducto" name="descripcion"
+                                    value="<%= locals.oldData && oldData.descripcion ? oldData.descripcion : null %>">
+                                <% if (locals.errores&& errores.descripcion) { %>
+                                    <div class="error-msg">
+                                        <%= errores.descripcion.msg %>
+                                    </div>
+                                    <% } %>
+                            </div>
+
+                            <button class="boton" type="submit">Guardar cambios</button>
+
+                        </form>
+                    </h2>
+
+
+                    <!-- footer -->
+                    <%- include("./partials/footer.ejs") %>
+                        <!-- /footer -->
+    </body>
+
+</html>

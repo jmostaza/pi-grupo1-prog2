@@ -22,25 +22,25 @@
 								<input class="inputForm" type="email" id="email" name="email"
 									value="<%= locals.old !== undefined && old.email  ? old.email:" " %>">
 								<% if (locals.errors && errors.email) { %>
-									<p class="feedback">
+									<p class="error-msg">
 										<%= errors.email.msg %>
 									</p>
 									<% } %>
 							</div>
-							<!-- <div>
-								<label for="usuario">Usuario:</label>
-								<input class="inputForm" type="text" id="usuario" name="usuario">
-								if (locals.errors && errors.usuario) { %>
-									<p class="feedback">
+							<div>
+								<!-- <label for="usuario">Usuario:</label>
+								<input class="inputForm" type="text" id="usuario" name="usuario"> -->
+								<!--  if (locals.errors && errors.usuario) { %>
+									<p class="error-msg">
 										 errors.usuario.msg %>
 									</p>
-									
-							</div> -->
+									 } %>	 -->
+							</div>
 							<div>
 								<label for="contrasena">Contraseña:</label>
 								<input class="inputForm" type="password" id="contrasena" name="contrasena">
 								<% if (locals.errors && errors.contrasena) { %>
-									<p class="feedback">
+									<p class="error-msg">
 										<%= errors.contrasena.msg %>
 									</p>
 									<% } %>

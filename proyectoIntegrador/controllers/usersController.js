@@ -113,7 +113,7 @@ let usersController = {
 
       .then(function (data) {
         // console.log('USERRR:', JSON.stringify(data,null,4));
-        
+
         res.render('profile', { listado: data })
       })
       .catch(function (e) {
@@ -125,23 +125,23 @@ let usersController = {
     let id = req.params.id
     users.findByPk(id)
       .then(function (data) {
-        if(req.session.user){
-          if(id == req.session.user.id){
+        if (req.session.user) {
+          if (id == req.session.user.id) {
             console.log(req.session.user);
-          res.render('profileEdit', { listado: data });
+            res.render('profileEdit', { listado: data });
+          }
+          else {
+            console.log(req.session.user);
+            res.redirect('/')
+          }
+
         }
-        else{
-          console.log(req.session.user);
+        else {
           res.redirect('/')
         }
-       
       }
-      else{
-        res.redirect('/')
-      }
-  }
-)
-    
+      )
+
       .catch(function (e) {
         console.log(e);
       })
@@ -156,7 +156,7 @@ let usersController = {
       dni: req.body.nroDocumento,
       foto: req.body.foto,
       id: req.session.user.id
-      
+
 
     }
 
@@ -168,11 +168,11 @@ let usersController = {
       console.log();
       users.update(usuario,
         {
-        where: {id: req.params.id}
-      })
+          where: { id: req.params.id }
+        })
         .then(function (data) {
-          req.session.user= usuario
-          console.log('USUARIOOO:' ,JSON.stringify(req.session.user, null,4));
+          req.session.user = usuario
+          console.log('USUARIOOO:', JSON.stringify(req.session.user, null, 4));
           return res.redirect('/')
         })
         .catch(function (e) {

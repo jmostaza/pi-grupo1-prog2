@@ -144,6 +144,81 @@ let productosController = {
             }
         }
 
+    },
+    showProductEdit: function (req, res) {
+
+        const id = req.params.id;
+
+        products.findByPk(id, {
+            include: [
+                { association: 'usuario' },
+            ]
+        })
+
+
+            .then(function (product) {
+                //console.log("ID DEL PRODUCTO: ", JSON.stringify(id,null,4));
+                //console.log("ID DEL USUARIO QUE LO SUBIO: ", JSON.stringify(id_usuario,null,4));
+                //console.log("PRODUCTO: ", JSON.stringify(product,null,4));
+
+                if (req.session.user) {
+                    if (product.id_usuario == req.session.user.id) {
+                        console.log("ID DEL USUARIO QUE LO SUBIO: ", JSON.stringify(product.id_usuario, null, 4));
+                        res.render("productEdit", { product: product })
+                    } else {
+                        console.log("req.session.user: ", JSON.stringify(req.session.user, null, 4));
+                        res.redirect('/')
+                    }
+                } else {
+                    res.redirect('/')
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    },
+
+    updateProduct: function (req, res) {
+        const resultValidation = validationResult(req); // guardamos en una variable lo que trajo el metodo validation result pasandole como parametro el objeto request.
+
+        if (!resultValidation.isEmpty()) {
+            const id = req.params.id;
+            products.findByPk(id, { //paso esto para poder usar product en la vista
+                include: [
+                    { association: 'usuario' },
+                ]
+            })
+                .then(function (product) {
+                    return res.render('productEdit', { product: product, errores: resultValidation.mapped(), oldData: req.body })
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+
+        } else {
+            const id = req.params.id;
+            console.log("IDDDD: ", JSON.stringify(id, null, 4));
+
+
+            const productoEditado = {
+                foto: req.body.foto,
+                nombre_producto: req.body.nombre_producto,
+                descripcion: req.body.descripcion,
+            }
+
+            console.log("PRODUCTO EDITADO: ", JSON.stringify(productoEditado, null, 4));
+
+            products.update(productoEditado,
+                { where: { id: id } }
+            )
+                .then(function (data) {
+                    res.redirect(`/productos/detalle/${id}`)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
     }
 
 }

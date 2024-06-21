@@ -2,47 +2,61 @@
 <html lang="es">
 <!-- Include Head -->
 <%- include("./partials/head.ejs") %>
-<body>
-	<!-- Header -->
-<%- include("./partials/header.ejs") %>
 
-<div class="container products-wrapper">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="products-title">Agregar productos</h2>
-        </div>
-        <!-- Show the "ultimos" products -->
-       
-        <h2 class="col-12">
-            <!-- Formulario -->
-            <form class="formularios" action="/productos/store" method="POST" novalidate>
-                <div>
-					<label for="foto">Foto del producto (URL):</label>
-					<input class="inputForm" type="text" id="foto" name="foto" value="<%= locals.oldData && oldData.foto ? oldData.foto : null %>">
-                    <% if (locals.errores&& errores.foto) { %>
-                        <div class="error-msg"><%= errores.foto.msg %></div>
-                       <% } %>
-                <div>
-					<label for="nombre_producto">Nombre del producto:</label>
-					<input class="inputForm" type="text" id="nombre_producto" name="nombre_producto" value="<%= locals.oldData && oldData.nombre_producto ? oldData.nombre_producto : null %>">
-                    <% if (locals.errores&& errores.nombre_producto) { %>
-                        <div class="error-msg"><%= errores.nombre_producto.msg %></div> 
-                       <% } %>
-                <div>
-					<label for="descripcion">Descripción del producto:</label>
-					<input class="inputForm" type="text" id="descripcion" name="descripcion" value="<%= locals.oldData && oldData.descripcion ? oldData.descripcion : null %>">
-                    <% if (locals.errores&& errores.descripcion) { %>
-                        <div class="error-msg"><%= errores.descripcion.msg %></div>
-                       <% } %>
-                
-                <button class="boton" type="submit">Agregar producto</button>
-            
-            </form>
-        </h2>
+    <body>
+        <!-- Header -->
+        <%- include("./partials/header.ejs") %>
+
+            <div class="container products-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="products-title">Agregar productos</h2>
+                    </div>
+                    <!-- Show the "ultimos" products -->
+
+                    <h2 class="col-12">
+                        <!-- Formulario -->
+                        <form class="formularios" action="/productos/store" method="POST" novalidate>
+                            <div>
+                                <label for="foto">Foto del producto (URL):</label>
+                                <input class="inputForm" type="text" id="foto" name="foto"
+                                    value="<%= locals.oldData && oldData.foto ? oldData.foto : null %>">
+                                <% if (locals.errores&& errores.foto) { %>
+                                    <div class="error-msg">
+                                        <%= errores.foto.msg %>
+                                    </div>
+                                    <% } %>
+                                        <div>
+                                            <label for="nombre_producto">Nombre del producto:</label>
+                                            <input class="inputForm" type="text" id="nombre_producto"
+                                                name="nombre_producto"
+                                                value="<%= locals.oldData && oldData.nombre_producto ? oldData.nombre_producto : null %>">
+                                            <% if (locals.errores&& errores.nombre_producto) { %>
+                                                <div class="error-msg">
+                                                    <%= errores.nombre_producto.msg %>
+                                                </div>
+                                                <% } %>
+                                                    <div>
+                                                        <label for="descripcion">Descripción del producto:</label>
+                                                        <input class="inputForm" type="text" id="descripcion"
+                                                            name="descripcion"
+                                                            value="<%= locals.oldData && oldData.descripcion ? oldData.descripcion : null %>">
+                                                        <% if (locals.errores&& errores.descripcion) { %>
+                                                            <div class="error-msg">
+                                                                <%= errores.descripcion.msg %>
+                                                            </div>
+                                                            <% } %>
+
+                                                                <button class="boton" type="submit">Agregar
+                                                                    producto</button>
+
+                        </form>
+                    </h2>
 
 
-    	<!-- footer -->
-	<%- include("./partials/footer.ejs") %>
-	<!-- /footer -->
-</body>	
+                    <!-- footer -->
+                    <%- include("./partials/footer.ejs") %>
+                        <!-- /footer -->
+    </body>
+
 </html>
