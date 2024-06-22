@@ -158,23 +158,27 @@ let usersController = {
   },
   update: function (req, res) {
     const id = req.params.id
-    let usuario = {
-      email: req.body.email,
-      contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
-      fecha: req.body.fecha,
-      dni: req.body.nroDocumento,
-      foto: req.body.foto,
-      id: req.session.user.id
 
-
+      let usuario = {
+        email: req.body.email,
+        fecha: req.body.fecha,
+        dni: req.body.nroDocumento,
+        foto: req.body.foto,
+        id: req.session.user.id
+  
+  
+      }
+    if(req.body.contrasenia){
+      usuario.contrasenia= bcrypt.hashSync(req.body.contrasenia, 10)
     }
+   
 
     let errors = validationResult(req)
     if (!errors.isEmpty()) { // pregunto si hay errores 
       console.log("errors : ", JSON.stringify(errors, null, 4));
       return res.render('profileEdit', { errors: errors.mapped(), old: req.body })
     } else {
-      console.log();
+      console.log('USUARIO', JSON.stringify(usuario,null,4));
       users.update(usuario,
         {
           where: { id: req.params.id }
