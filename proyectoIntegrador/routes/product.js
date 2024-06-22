@@ -15,6 +15,7 @@ router.get('/productEdit/:id', productosController.showProductEdit);
 router.post('/store', productAddValidations, productosController.store);
 router.post('/detalle/:id', commentValidations, productosController.addComment); 
 router.post("/update/:id", productEditValidations, productosController.updateProduct)
+router.post('/delete/:id', productosController.delete)
 
 
 module.exports= router;

@@ -7,20 +7,8 @@ let editProfileValidation= [
     .notEmpty()
     .withMessage('Debes completar este campo').bail()
     .isEmail()
-    .withMessage('Debes ingresar un email valido').bail()
-    .custom(function(value, {req}){
-        return user.findOne({
-            where:{
-                email: req.body.email,
-            }
-        })
-        .then(function(user){
-            if(user){
-                throw new Error('El email ingresado ya existe')
-            }
-           
-        })
-    }),
+    .withMessage('Debes ingresar un email valido').bail(),
+   
     body('contrasenia')
     .custom(function(value, {req}){
         if(value && value.length<4){

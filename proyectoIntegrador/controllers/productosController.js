@@ -21,13 +21,13 @@ let productosController = {
         })
             .then(function (cafe) {
                 comments.findAll({
-                    where: { id_usuario: req.session.user.id },
+                    where: { id_producto: cafe.id },
                     order: [['created_at', 'DESC']],
                     include: [{ association: 'usuario' }]
 
                 })
                     .then(function (data) {
-                        console.log('comentario: ', JSON.stringify(data, null, 4));
+                        console.log('cafe: ', JSON.stringify(cafe, null, 4));
                         res.render('productos', { listado: cafe, comentario: data })
                     })
                     .catch(function (error) {
@@ -141,14 +141,27 @@ let productosController = {
                         }
                     ],
                 })
-
+                .then(function (cafe) {
+                    comments.findAll({
+                        where: { id_producto: cafe.id },
+                        order: [['created_at', 'DESC']],
+                        include: [{ association: 'usuario' }]
+    
+                    })
                     .then(function (data) {
-                        return res.render("productos", { listado: data, errores: errores.mapped(), oldData: req.body });
+                        console.log('cafe: ', JSON.stringify(cafe, null, 4));
+                        return res.render("productos", { listado: cafe, comentario:data, errores: errores.mapped(), oldData: req.body });
                     })
                     .catch(function (error) {
                         console.log(error);
                     })
 
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+            
+                
             }
         }
 
@@ -227,8 +240,30 @@ let productosController = {
                     console.log(error);
                 })
         }
+    },
+    delete: function(req,res){
+        let id= req.params.id
+        if(req.session.user){
+            console.log('logueo? ', JSON.stringify(req.session.user,null,4));
+            comments.destroy({
+                where: {id_producto: id}
+            })
+            .then(function(data){
+                products.destroy({
+                    where: {id:id}
+                })
+                .then(function(data){
+                    res.redirect('/')
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+            })
+        }
+        else{
+            res.redirect('/')
+        }
     }
-
 }
 
 

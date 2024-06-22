@@ -97,24 +97,33 @@ let usersController = {
     let id = req.params.id
     users.findByPk(id, {
       include: [
-        // {association: 'comentario'},
         {
           association: 'producto',
           include: [
-            { association: "comentario" }
-          ]
+            { association: 'comentario' }
+          ],
+
         }
       ],
-      order: [
-        //como verifico que es esta primero el ultimo cargado???
-        ['created_at', 'DESC']
-      ]
-    })
 
+    }
+    )
       .then(function (data) {
-        // console.log('USERRR:', JSON.stringify(data,null,4));
+        database.Product.findAll({
+          where: { id_usuario: req.params.id },
+          order: [['created_at', 'DESC']],
+          include: [
+            { association: 'comentario' }
+          ]
+        })
+          .then(function (productos) {
+            return res.render('profile', { listado: data, productos: productos })
+          })
+          // console.log('USERRR:', JSON.stringify(data,null,4));
+          .catch(function (e) {
+            console.log(e);
+          })
 
-        res.render('profile', { listado: data })
       })
       .catch(function (e) {
         console.log(e);
