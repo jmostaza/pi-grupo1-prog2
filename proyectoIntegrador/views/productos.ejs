@@ -21,7 +21,7 @@
 					<% if (locals.user) { %>
 						<% if (locals.user.id == listado.id_usuario) { %>
 							<form action="/productos/delete/<%= listado.id %>" method="post">
-								<button type="submit">Eliminar</button>
+								<button class="btn btn-danger cerrar" type="submit">Eliminar</button>
 							</form>
 						<% } %>
 					<% } %>
