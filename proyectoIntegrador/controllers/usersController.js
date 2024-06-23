@@ -7,7 +7,7 @@ let usersController = {
 
   //ESTE REGISTER MANDA A LA PAGINA DE REGISTRO
   showRegister: function (req, res) {
-    if (req.session.users != undefined) { //si hay un usuario logueado
+    if (req.session.user) { //si hay un usuario logueado
       res.redirect("/")
     } else {
       return res.render("register")
